@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Rotate Darsi</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f7f6; padding: 50px; text-align: center; }
+        .container { display: flex; gap: 40px; justify-content: center; margin-top: 50px; }
+        .wrapper { border: 2px dotted #aaa; perspective: 400px; }
+        .box {
+            width: 120px; height: 120px;
+            background-color: #f1c40f; color: #333;
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; transition: transform 0.5s;
+        }
+        
+        /* Rotate (Z o'qi bo'yicha aylanish) */
+        .box-1:hover { transform: rotate(45deg); }
+        
+        /* Rotate X (X o'qi bo'yicha) */
+        .box-2:hover { transform: rotateX(180deg); }
+        
+        /* Rotate Y (Y o'qi bo'yicha) */
+        .box-3:hover { transform: rotateY(180deg); }
+    </style>
+</head>
+<body>
+    <h1>CSS Rotate (Aylantirish)</h1>
+    <div class="container">
+        <div class="wrapper"><div class="box box-1">rotate(45deg)</div></div>
+        <div class="wrapper"><div class="box box-2">rotateX(180deg)</div></div>
+        <div class="wrapper"><div class="box box-3">rotateY(180deg)</div></div>
+    </div>
+</body>
+</html>

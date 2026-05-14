@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Keyframes Darsi</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f7f6; padding: 50px; text-align: center; }
+        
+        .box {
+            width: 150px; height: 150px;
+            background-color: #9b59b6; color: white;
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; margin: 50px auto;
+            animation-name: colorChange;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+        }
+
+        /* Oddiy from/to keyframes */
+        @keyframes fromToExample {
+            from { background-color: #9b59b6; transform: translateX(0); }
+            to { background-color: #e67e22; transform: translateX(200px); }
+        }
+
+        /* Foizli keyframes */
+        @keyframes colorChange {
+            0% { background-color: #9b59b6; transform: scale(1); border-radius: 0; }
+            25% { background-color: #3498db; transform: scale(1.2); }
+            50% { background-color: #2ecc71; transform: scale(1); border-radius: 50%; }
+            75% { background-color: #f1c40f; transform: scale(0.8); }
+            100% { background-color: #9b59b6; transform: scale(1); border-radius: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS @keyframes</h1>
+    <p>Animatsiyaning qanday jarayonda o'zgarishini belgilash uchun @keyframes ishlatiladi.</p>
+    <div class="box">Animatsiya (0%-100%)</div>
+</body>
+</html>

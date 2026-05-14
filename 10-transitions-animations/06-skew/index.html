@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Skew Darsi</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f7f6; padding: 50px; text-align: center; }
+        .container { display: flex; gap: 40px; justify-content: center; margin-top: 50px; }
+        .wrapper { border: 2px dotted #aaa; }
+        .box {
+            width: 120px; height: 120px;
+            background-color: #e74c3c; color: white;
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; transition: transform 0.4s;
+        }
+        
+        /* Skew X */
+        .box-1:hover { transform: skewX(20deg); }
+        
+        /* Skew Y */
+        .box-2:hover { transform: skewY(20deg); }
+        
+        /* Skew (X va Y) */
+        .box-3:hover { transform: skew(15deg, 15deg); }
+    </style>
+</head>
+<body>
+    <h1>CSS Skew (Qiyshaytirish)</h1>
+    <div class="container">
+        <div class="wrapper"><div class="box box-1">skewX(20deg)</div></div>
+        <div class="wrapper"><div class="box box-2">skewY(20deg)</div></div>
+        <div class="wrapper"><div class="box box-3">skew(15deg, 15deg)</div></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation xususiyatlari</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f7f6; padding: 50px; text-align: center; }
+        .container { display: flex; flex-direction: column; gap: 20px; align-items: center; margin-top: 30px; }
+        .box {
+            width: 100px; height: 50px;
+            background-color: #3498db; color: white;
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; position: relative;
+        }
+
+        @keyframes moveRight {
+            from { left: 0; }
+            to { left: 300px; background-color: #e74c3c; }
+        }
+
+        /* Iteration count (infinite) */
+        .box-1 { animation: moveRight 2s infinite; }
+        
+        /* Direction (alternate) */
+        .box-2 { animation: moveRight 2s infinite alternate; }
+
+        /* Fill mode (forwards) */
+        .box-3 { animation: moveRight 2s forwards; }
+
+    </style>
+</head>
+<body>
+    <h1>CSS Animation Xususiyatlari</h1>
+    <div class="container">
+        <div class="box box-1">Infinite</div>
+        <div class="box box-2">Alternate</div>
+        <div class="box box-3">Forwards</div>
+    </div>
+</body>
+</html>

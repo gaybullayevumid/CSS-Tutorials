@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Scale Darsi</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f7f6; padding: 50px; text-align: center; }
+        .container { display: flex; gap: 40px; justify-content: center; margin-top: 50px; }
+        .wrapper { border: 2px dotted #aaa; }
+        .box {
+            width: 120px; height: 120px;
+            background-color: #1abc9c; color: white;
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; transition: transform 0.3s;
+        }
+        
+        /* Scale X */
+        .box-1:hover { transform: scaleX(1.5); }
+        
+        /* Scale Y */
+        .box-2:hover { transform: scaleY(1.5); }
+        
+        /* Scale (Proportsional) */
+        .box-3:hover { transform: scale(1.2); }
+
+        /* Kichraytirish */
+        .box-4:hover { transform: scale(0.8); }
+    </style>
+</head>
+<body>
+    <h1>CSS Scale (Masshtablash)</h1>
+    <div class="container">
+        <div class="wrapper"><div class="box box-1">scaleX(1.5)</div></div>
+        <div class="wrapper"><div class="box box-2">scaleY(1.5)</div></div>
+        <div class="wrapper"><div class="box box-3">scale(1.2)</div></div>
+        <div class="wrapper"><div class="box box-4">scale(0.8)</div></div>
+    </div>
+</body>
+</html>
