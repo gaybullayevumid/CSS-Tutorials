@@ -30,6 +30,25 @@ button:hover {
 transition: property duration timing-function delay;
 ```
 
+### 1. Property — nima o‘zgaradi
+
+Qaysi CSS property animatsiya bo‘lishini aytamiz.
+
+
+```css
+transition: background 1s;
+```
+
+Faqat background animatsiya bo‘ladi.
+
+Yoki:
+
+```css
+transition: width 1s;
+```
+
+Width silliq o‘zgaradi.
+
 ## index.html ning tuzilmasi
 
 `index.html` faylida 3 ta quti bor. Ularning hammasi `body` va `.container` ichiga joylashtirilgan.
