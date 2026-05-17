@@ -347,31 +347,252 @@ transition: background-color 0.5s ease; /* delay yo'q = darhol boshlanadi */
 
 ## `transition-timing-function` qiymatlari
 
+`transition-timing-function` — animatsiya davomida **tezlikning qanday o'zgarishini** boshqaradi.
+
+---
+
+### `ease` — sekin boshlanadi, tezlashadi, sekin tugaydi (default)
+
+> _"transition will start slow, then go fast, and end slow"_
+
 ```css
-transition-timing-function: ease;        /* Sekin → Tez → Sekin (default) */
-transition-timing-function: linear;      /* Boshidan oxirigacha bir xil tezlik */
-transition-timing-function: ease-in;     /* Sekin boshlanadi, oxirida tezlashadi */
-transition-timing-function: ease-out;    /* Tez boshlanadi, oxirida sekinlashadi */
-transition-timing-function: ease-in-out; /* Sekin → Tez → Sekin (kuchliroq) */
+transition-timing-function: ease;
+/* yoki shorthand da: */
+transition: background-color 0.5s ease;
 ```
 
-**Ko'rgazma:**
 ```
-ease:        [----->   >>   >>   >  > -----]  tabiiy, ko'p ishlatiladi
-linear:      [--  --  --  --  --  --  --  ]  bir tekis, mexanik
-ease-in:     [-------> > >> >>>>>>---------]  sekindan tezga
-ease-out:    [>>>>>>>>> > >  >  >----------]  tezdan sekinга
-ease-in-out: [------> >>>>>> >  >----------]  ikki tomonda sekin
+Tezlik:  ^
+         |          ___
+         |        /     \
+         |      /         \
+         |    /             \
+         |___/               \___
+         +-------------------------> Vaqt
+           Sekin  Tez  Tez  Sekin
 ```
 
-| Qiymat | Qachon ishlatish |
-|---|---|
-| `ease` | Aksariyat hover effektlar (default) |
-| `linear` | Progress bar, slider, aylanish |
-| `ease-in` | Element sahifadan chiqayotganda |
-| `ease-out` | Element sahifaga kirayotganda |
-| `ease-in-out` | Modal, drawer ochilishi |
-| `cubic-bezier()` | O'ziga xos tabiiy his kerak bo'lganda |
+- Animatsiya **sekin** boshlanadi
+- O'rtada **tezlashadi**
+- Oxirida yana **sekinlashadi**
+- Bu eng tabiiy his beradi — shuning uchun **default** qiymat
+- Aksariyat hover effektlar uchun ideal
+
+```css
+/* Misol: */
+.box-1 {
+    transition: background-color 0.5s ease; /* index.html da ham ease ishlatilgan */
+}
+```
+
+---
+
+### `linear` — boshidan oxirigacha bir xil tezlik
+
+> _"transition will keep the same speed from start to end"_
+
+```css
+transition-timing-function: linear;
+transition: background-color 0.5s linear;
+```
+
+```
+Tezlik:  ^
+         |  ________________________
+         | /                        \
+         |/                          \
+         +-------------------------> Vaqt
+           Bir xil  Bir xil  Bir xil
+```
+
+- Boshidan oxirigacha **bir xil tezlik** — o'zgarmaydi
+- Mexanik, sun'iy his beradi
+- Tabiiy ko'rinmaydi (real hayotda narsalar shunday harakatlanmaydi)
+- Faqat maxsus holatlarda ishlatiladi
+
+```css
+/* Qachon ishlatiladi: */
+.progress-bar { transition: width 2s linear; }     /* yuklanish paneli */
+.spinner      { transition: transform 1s linear; } /* aylanayotgan loading */
+.clock-hand   { transition: transform 1s linear; } /* soat mili */
+```
+
+---
+
+### `ease-in` — sekin boshlanadi (oxirida tezlashadi)
+
+> _"transition will start slow"_
+
+```css
+transition-timing-function: ease-in;
+transition: background-color 0.5s ease-in;
+```
+
+```
+Tezlik:  ^
+         |                    ______
+         |                 __/
+         |             ___/
+         |          __/
+         |_________/
+         +-------------------------> Vaqt
+           Juda sekin ...  Tez  Tez
+```
+
+- Animatsiya **juda sekin** boshlanadi
+- Oxiriga borib **tezlashib** tugaydi
+- Foydalanuvchiga biroz og'ir his beradi — chunki boshida "nima bo'lyapti?" deydi
+- Odatda **element sahifadan chiqayotganda** ishlatiladi
+
+```css
+/* Qachon ishlatiladi: */
+.modal.closing { transition: opacity 0.3s ease-in; } /* modal yopilish */
+.card.removing { transition: transform 0.4s ease-in; } /* karta o'chirilish */
+```
+
+---
+
+### `ease-out` — tez boshlanadi (oxirida sekinlashadi)
+
+> _"transition will end slow"_
+
+```css
+transition-timing-function: ease-out;
+transition: background-color 0.5s ease-out;
+```
+
+```
+Tezlik:  ^
+         |  ______
+         | /      \___
+         |/            \___
+         |                  \___
+         |                       \___
+         +-------------------------> Vaqt
+           Tez  Tez  ...  Sekin  Juda sekin
+```
+
+- Animatsiya **tez** boshlanadi
+- Oxirida **sekinlashib** to'xtaydi
+- Eng tabiiy his beradi — real hayotda narsalar ham shunday sekinlashadi
+- **Element sahifaga kirayotganda** ideal
+
+```css
+/* Qachon ishlatiladi: */
+.modal.opening    { transition: transform 0.4s ease-out; } /* modal ochilish */
+.dropdown.opening { transition: opacity 0.3s ease-out; }   /* dropdown ochilish */
+.toast            { transition: translateY 0.3s ease-out; } /* bildirishnoma */
+```
+
+---
+
+### `ease-in-out` — sekin boshlanadi va sekin tugaydi
+
+> _"transition will have a slow start and end"_
+
+```css
+transition-timing-function: ease-in-out;
+transition: background-color 0.5s ease-in-out;
+```
+
+```
+Tezlik:  ^
+         |           ___
+         |         /     \
+         |       /         \
+         |     /             \
+         |____/               \____
+         +-------------------------> Vaqt
+          Sekin   Tez   Tez   Sekin
+```
+
+- `ease` ga o'xshaydi, lekin **ikki tomonda sekinlash kuchliroq**
+- Juda silliq va professional his beradi
+- Uzoqroq animatsiyalar uchun (0.5s dan yuqori) ideal
+
+```css
+/* ease vs ease-in-out farqi: */
+transition: transform 0.3s ease;        /* qisqa animatsiyalarda yaxshi */
+transition: transform 0.8s ease-in-out; /* uzoq animatsiyalarda yaxshi */
+
+/* Qachon ishlatiladi: */
+.drawer  { transition: transform 0.5s ease-in-out; } /* yon panel */
+.carousel{ transition: transform 0.6s ease-in-out; } /* slayder */
+```
+
+---
+
+### `cubic-bezier(n,n,n,n)` — o'z qiymatlaringni belgilab bera oladi
+
+> _"lets you define your own values in a cubic-bezier function"_
+
+```css
+transition-timing-function: cubic-bezier(n, n, n, n);
+/* index.html da: */
+transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+```
+
+Yuqoridagi barcha qiymatlar (`ease`, `linear`, va boshqalar) aslida `cubic-bezier` ning maxsus holatlaridir:
+
+```css
+ease:        cubic-bezier(0.25, 0.1,  0.25, 1.0)
+linear:      cubic-bezier(0.0,  0.0,  1.0,  1.0)
+ease-in:     cubic-bezier(0.42, 0.0,  1.0,  1.0)
+ease-out:    cubic-bezier(0.0,  0.0,  0.58, 1.0)
+ease-in-out: cubic-bezier(0.42, 0.0,  0.58, 1.0)
+```
+
+**4 ta son nimani bildiradi?**
+
+```css
+cubic-bezier(x1, y1, x2, y2)
+```
+
+- `x1, y1` — birinchi kontrol nuqta (0 dan 1 gacha)
+- `x2, y2` — ikkinchi kontrol nuqta (0 dan 1 gacha)
+
+**index.html dagi `cubic-bezier(0.25, 0.8, 0.25, 1)` qanday ishlaydi:**
+
+```
+Tezlik:  ^
+     1.0 |                    ___---
+         |               ____/
+         |          ____/
+         |     ____/
+     0.0 |____/
+         +-------------------------> Vaqt
+              0.25      0.8   1.0
+```
+
+Natija: boshida sekin, keyin tezlashib, oxirida juda tekis to'xtaydi.
+
+**Qiziq `cubic-bezier` qiymatlari:**
+
+```css
+/* Orqaga ketib, keyin oldinга (spring effect) */
+cubic-bezier(0.68, -0.55, 0.27, 1.55)
+
+/* Tez kirib, sekin chiqish */
+cubic-bezier(0.4, 0, 0.2, 1)  /* Material Design standart */
+
+/* "Bounce" hissi */
+cubic-bezier(0.34, 1.56, 0.64, 1)
+```
+
+> **Qurol:** [cubic-bezier.com](https://cubic-bezier.com) — grafik ustida bosib qiymatlarni vizual sozlash mumkin!
+
+---
+
+### Qiymatlar qisqacha jadvali
+
+| Qiymat | Ta'rif | Qachon ishlatish |
+|---|---|---|
+| `ease` | Sekin → Tez → Sekin **(default)** | Aksariyat hover effektlar |
+| `linear` | Boshidan oxirigacha bir xil tezlik | Progress bar, loading, soat |
+| `ease-in` | Sekin boshlanadi | Element sahifadan chiqayotganda |
+| `ease-out` | Sekin tugaydi (tez boshlanadi) | Element sahifaga kirayotganda |
+| `ease-in-out` | Sekin boshlanadi **va** tugaydi | Modal, drawer, slayder |
+| `cubic-bezier()` | O'z qiymatlaringni belgilaysan | O'ziga xos animatsiya kerakda |
 
 ---
 
