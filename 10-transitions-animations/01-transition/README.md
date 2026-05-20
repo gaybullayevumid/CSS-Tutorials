@@ -35,7 +35,7 @@ transition: property duration timing-function delay;
 Qaysi CSS property animatsiya bo‘lishini aytamiz.
 
 
-```css
+```txt
 transition: background 1s;
 ```
 
@@ -43,7 +43,7 @@ Faqat background animatsiya bo‘ladi.
 
 Yoki:
 
-```css
+```txt
 transition: width 1s;
 ```
 
