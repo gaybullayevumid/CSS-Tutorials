@@ -1,8 +1,5 @@
 # 01. CSS Transition (O'tishlar)
 
-> **Amaliy fayl:** `index.html` ni brauzerda ochib, sichqonchani qutilar ustiga olib boring va animatsiyalarni jonli ko'ring!
-
----
 
 ## Transition nima? Nima uchun kerak?
 
