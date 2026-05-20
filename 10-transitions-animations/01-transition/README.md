@@ -9,22 +9,26 @@ Endi tasavvur qiling — rang asta-sekin, silliq tarzda o'zgaradi — bu esa pro
 
 Mana shu **"silliqlik"ni** ta'minlaydigan narsa — `transition`!
 
-```
-Transition = element A holatidan B holatiga o'tganda
-             o'zgarishni VAQT ichida silliq amalga oshirish
-```
-
-**Transition bo'lmaganda:**
-```
-Holat: NORMAL (ko'k)  ----bir zumda----> Holat: HOVER (qizil)
+```html
+<button>Button</button>
 ```
 
-**Transition bo'lganda:**
-```
-Holat: NORMAL (ko'k)  ----0.5 soniya ichida silliq----> Holat: HOVER (qizil)
+```css
+button {
+    background: blue;
+    transition: 1s;
+}
+
+button:hover {
+    background: red;
+}
 ```
 
----
+## Transition sintaksisi
+
+```txt
+transition: property duration timing-function delay;
+```
 
 ## index.html ning tuzilmasi
 
